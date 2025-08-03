@@ -78,4 +78,4 @@ Pull requests welcome and bug reports are welcome. Architecture is deliberately 
 
 ## 📄 License
 
-This project is licensed under the 3-clause BSD license.
+This project is licensed under the 3-clause BSD license. See the [LICENSE](LICENSE) file for details.
