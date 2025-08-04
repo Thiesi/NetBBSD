@@ -5564,7 +5564,17 @@ class BBS:
                     if hasattr(self, 'logger'):
                         self.logger.warning(f"Remote file {filename} exceeds max size; skipped")
                     return
-                file_path = dir_path / filename
+                # Validate filename: must not contain path separators or be absolute
+                if os.path.sep in filename or (os.path.altsep and os.path.altsep in filename) or Path(filename).is_absolute():
+                    if hasattr(self, 'logger'):
+                        self.logger.warning(f"Rejected remote file with invalid filename: {filename}")
+                    return
+                file_path = (dir_path / filename).resolve()
+                # Ensure file_path is within dir_path
+                if not str(file_path).startswith(str(dir_path.resolve())):
+                    if hasattr(self, 'logger'):
+                        self.logger.warning(f"Rejected remote file with path traversal attempt: {filename}")
+                    return
                 try:
                     with open(file_path, 'wb') as fh:
                         fh.write(data_bytes)
