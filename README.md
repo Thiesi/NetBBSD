@@ -16,7 +16,7 @@
 - Granular permission system
 - Real-time chat channels
 - Lightweight and dependency-free (Python 3 stdlib only)
-- Designed for NetBSD, but portable to any *nix
+- Designed for NetBSD, but should run on or easily be portable to any *nix(-like) system
 
 ---
 
@@ -32,8 +32,8 @@
 ## 🔐 Security
 
 - Passwords hashed via bcrypt (fallback: pbkdf2_hmac)
-- Rate-limited login attempts (configurable)
-- Idle disconnects to prevent zombie sessions
+- Configurable rate limits for logins
+- Idle timeouts to prevent zombie sessions
 - No shell evals or arbitrary code execution
 - Sandbox to run external programs/door games
 
