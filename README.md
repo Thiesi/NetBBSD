@@ -1,6 +1,6 @@
-# NetBBSD – ANSI-powered BBS for the Terminal Age
+# NetBBSD – A modern take on traditional Bulletin Board Systems (BBSes)
 
-`NetBBSD` is a retro-inspired, modern-architecture BBS designed for *nix(-like) systems like NetBSD, FreeBSD, and other POSIX-compatible systems. It brings back the experience of the classic BBS era, enhanced with modern security, Unicode support, an IRC-style real-time chat, and inter-BBS link capabilities.
+`NetBBSD` is a retro-inspired, modern-architecture BBS software designed for *nix(-like) systems like NetBSD, FreeBSD, and other POSIX-compatible systems. It brings back the experience of the classic BBS era, enhanced with modern security, Unicode support, an IRC-style real-time chat, and inter-BBS link capabilities.
 
 ---
 
