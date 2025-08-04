@@ -1,19 +1,41 @@
 # NetBBSD – ANSI-powered BBS for the Terminal Age
 
-`NetBBSD` is a retro-inspired, modern-architecture BBS system designed for minimalist environments like NetBSD, FreeBSD, and other POSIX-compatible systems. It brings back the experience of the classic BBS era, enhanced with modern security, Unicode/ANSI support, and a pluggable architecture ready for real-time chat, door games, and more.
+`NetBBSD` is a retro-inspired, modern-architecture BBS designed for *nix(-like) systems like NetBSD, FreeBSD, and other POSIX-compatible systems. It brings back the experience of the classic BBS era, enhanced with modern security, Unicode support, an IRC-style real-time chat, and inter-BBS link capabilities.
 
 ---
 
 ## ✨ Features
 
 - Telnet-based access for real terminal clients
-- ANSI art, color menus, and retro charm
+- Support for ANSI art and color menus
 - SQLite-backed database with hashed passwords
-- Message boards, private messages, and wall posts
-- Role-based moderation and admin controls
-- User idle timeout and login throttling
+- Message boards, file areas, and private messages
+- Attachment support for message board posts
+- Role-based moderation
+- Extensive SysOp controls
+- Granular permission system
+- Real-time chat channels
 - Lightweight and dependency-free (Python 3 stdlib only)
 - Designed for NetBSD, but portable to any *nix
+
+---
+
+## 📡 Inter-BBS Support
+
+- Easy-to-setup mesh network "NetBBSD Link" between `NetBBSD` BBSes with automatic key exchange
+- Inter-BBS PM system
+- Linked file areas ("NetBBSD Link Areas") and message boards ("NetBBSD Link Boards")
+- Linked IRC-style chat channels ("NetBBSD Link Channels")
+
+---
+
+## 🔐 Security
+
+- Passwords hashed via bcrypt (fallback: pbkdf2_hmac)
+- Rate-limited login attempts (configurable)
+- Idle disconnects to prevent zombie sessions
+- No shell evals or arbitrary code execution
+- Sandbox to run external programs/door games
 
 ---
 
@@ -21,7 +43,7 @@
 
 ### Requirements
 
-- Python 3.9+
+- Python 3.7+ (3.9+ recommended)
 - NetBSD or any UNIX-like system with POSIX support
 
 ### Run Locally
@@ -33,7 +55,7 @@ $ python3 netbbsd.py
 You can connect with:
 
 ```bash
-$ telnet localhost 6023
+$ telnet localhost 2323
 ```
 
 Upon first run, `netbbsd.py` creates a config file `netbbsd.ini` in the current directory with (hopefully) sensible defaults.
@@ -41,38 +63,25 @@ This README is very much work in progress - just like the entire project. Don't 
 
 ---
 
-## 🔐 Security
-
-- Passwords stored via bcrypt (fallback: pbkdf2_hmac)
-- Rate-limited login attempts (configurable)
-- Idle disconnects to prevent zombie sessions
-- No shell evals or arbitrary code execution
-- Optional external door support is sandboxed
-
----
-
 ## 🛠 Configuration
 
-The `[security]` section of `netbbsd.ini` lets you define:
+All configuration takes please in the `netbbsd.ini` INI file. At the very least, you should set a `hostname` for your BBS. 
 
-- `max_failed_attempts`
-- `block_duration`
-- `idle_timeout`
+This documentation is severely lacking, but you might be able to gather more information from the actual code and its annotations. 
 
 ---
 
-## 🧩 Coming Soon
+## 🧩 Future Enhancements
 
-- Door game launcher (external process sandbox)
-- File board and upload/download quotas
-- Real-time chat between online users
-- SSH support for encrypted sessions
+- Compatibility of door game launcher (external process sandbox) with existing door games for other BBS software packages
+- Upload/download quotas for file areas
+- Attachment support for PMs
 
 ---
 
 ## 🤝 Contributing
 
-Pull requests welcome and bug reports are welcome. Architecture is deliberately monolithic for ease of deployment, but modularization support is possible in future branches.
+Pull requests and bug reports are welcome. Architecture is deliberately monolithic for ease of deployment, but modularization is possible in future branches (i.e. code is already divided into functions).
 
 ---
 
